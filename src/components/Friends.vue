@@ -5,7 +5,7 @@
             <span>are looking for a house</span>
         </h2>
         <div class="carousel-wrapper">
-            <div class="friends__carousel">
+            <div class="friends__carousel" id="carousel">
                 <ul class="friends__list">
                     <li class="friends__item" 
                         v-for="pet in pets" 
@@ -41,11 +41,12 @@ export default {
             currentSlideIndex: 0,
             buttonPrevStatus: 'button-noactive',
             buttonNextStatus: 'button-active',
-            carouselWidthWatch: (pets.length * 360)-1080
+            carouselWidthWatch: (pets.length * 360)-1080,
         }
     },
     methods: {
         prevSlide() {
+            this.whatcQuerry()
             if (this.currentSlideIndex > 0) {
                 this.currentSlideIndex -= 360 
                 this.buttonPrevStatus = 'button-active'
@@ -55,7 +56,8 @@ export default {
                 this.buttonNextStatus = 'button-active'
             }
         },
-        nextSlide() {
+        nextSlide() {  
+            this.whatcQuerry()          
             if (this.currentSlideIndex < this.carouselWidthWatch) {
                 this.currentSlideIndex += 360
                 this.buttonNextStatus = 'button-active'
@@ -63,6 +65,15 @@ export default {
             } if (this.currentSlideIndex === this.carouselWidthWatch) {
                 this.buttonNextStatus = 'button-noactive'
                 this.buttonPrevStatus = 'button-active'
+            }
+        },
+        whatcQuerry() {
+            if (document.documentElement.clientWidth < 1220) {
+                this.carouselWidthWatch = (pets.length * 360)-720
+            } if (document.documentElement.clientWidth < 850) {
+                 this.carouselWidthWatch = (pets.length * 360)-360
+            } if (document.documentElement.clientWidth > 1220) {
+                this.carouselWidthWatch = (pets.length * 360)-1080
             }
         }
     }
