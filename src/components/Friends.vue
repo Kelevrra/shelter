@@ -27,6 +27,7 @@
             :class="buttonNextStatus"
             @click="nextSlide">&rarr;</button>
         </div>
+        <a class="friends__toggle-link" href="#">Get to know the rest</a>
     </section>
 </template>
 
@@ -39,7 +40,8 @@ export default {
             pets,
             currentSlideIndex: 0,
             buttonPrevStatus: 'button-noactive',
-            buttonNextStatus: 'button-active'
+            buttonNextStatus: 'button-active',
+            carouselWidthWatch: (pets.length * 360)-1080
         }
     },
     methods: {
@@ -54,11 +56,11 @@ export default {
             }
         },
         nextSlide() {
-            if (this.currentSlideIndex < (this.pets.length * 360)-1080) {
+            if (this.currentSlideIndex < this.carouselWidthWatch) {
                 this.currentSlideIndex += 360
                 this.buttonNextStatus = 'button-active'
                 this.buttonPrevStatus = 'button-active'
-            } if (this.currentSlideIndex === (this.pets.length * 360)-1080) {
+            } if (this.currentSlideIndex === this.carouselWidthWatch) {
                 this.buttonNextStatus = 'button-noactive'
                 this.buttonPrevStatus = 'button-active'
             }
@@ -73,6 +75,7 @@ export default {
     flex-direction: column;
     align-items: center;
     background: #F6F6F6;
+    padding-bottom: 80px;
 
     &__title {
         font-family: Georgia, sans-serif;
@@ -207,6 +210,50 @@ export default {
             background: transparent;
         }
     }
-}
 
+    &__toggle-link {
+        font-family: Georgia, sans-serif;
+        text-decoration: none;
+        font-size: 17px;
+        line-height: 48px;
+        color: #292929;
+        width: 260px;
+        background: #F1CDB3;
+        border-radius: 100px;
+        &:hover {
+            background: #FDDCC4;
+        }
+    }
+}
+@media(max-width: 1220px) {
+    .friends {
+        &__carousel {
+            width: 720px;
+        }
+    }
+}
+@media(max-width: 850px) {
+    .friends {
+        &__carousel {
+            width: 360px;
+        }
+    }
+}
+@media(max-width: 500px) {
+    .friends {
+        &__scroll-button {
+            top: 98%;
+            &--left {
+                left: 20%;
+            }
+            &--right {
+                right: 20%;
+            }
+        }
+
+        &__toggle-link {
+            margin-top: 40px;
+        }
+    }
+}
 </style>
