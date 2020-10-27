@@ -8,19 +8,24 @@
             <div class="friends__carousel">
                 <ul class="friends__list">
                     <li class="friends__item" 
-                        v-for="pet in pets" :key="pet.id">
+                        v-for="pet in pets" 
+                        :key="pet.id"
+                        :style="{ 'margin-left': '-' + (currentSlideIndex) + 'px' }">
                         <a href="#">
-                            <img 
-                            :src="pet.img" 
+                            <img :src="pet.img" 
                             :alt="pet.name + ' ' + pet.type">
                             <p>{{ pet.name }}</p>
-                            <button>{{ pet.button }}</button>
+                            <button>Learn more</button>
                         </a>
                     </li>
                 </ul>
             </div>
-            <button class="friends__scroll-button friends__scroll-button--left" type="button" id="prev">&larr;</button>
-            <button class="friends__scroll-button friends__scroll-button--right" type="button" id="prev">&rarr;</button>
+            <button class="friends__scroll-button friends__scroll-button--left" type="button" 
+            :class="buttonPrevStatus"
+            @click="prevSlide">&larr;</button>
+            <button class="friends__scroll-button friends__scroll-button--right" type="button"
+            :class="buttonNextStatus"
+            @click="nextSlide">&rarr;</button>
         </div>
     </section>
 </template>
@@ -31,7 +36,32 @@ import pets from '@/data/pets.js'
 export default {
     data() {
         return {
-            pets
+            pets,
+            currentSlideIndex: 0,
+            buttonPrevStatus: 'button-noactive',
+            buttonNextStatus: 'button-active'
+        }
+    },
+    methods: {
+        prevSlide() {
+            if (this.currentSlideIndex > 0) {
+                this.currentSlideIndex -= 360 
+                this.buttonPrevStatus = 'button-active'
+                this.buttonNextStatus = 'button-active'
+            } if (this.currentSlideIndex === 0) {
+                this.buttonPrevStatus = 'button-noactive'
+                this.buttonNextStatus = 'button-active'
+            }
+        },
+        nextSlide() {
+            if (this.currentSlideIndex < (this.pets.length * 360)-1080) {
+                this.currentSlideIndex += 360
+                this.buttonNextStatus = 'button-active'
+                this.buttonPrevStatus = 'button-active'
+            } if (this.currentSlideIndex === (this.pets.length * 360)-1080) {
+                this.buttonNextStatus = 'button-noactive'
+                this.buttonPrevStatus = 'button-active'
+            }
         }
     }
 }
@@ -75,29 +105,32 @@ export default {
         background: #fafafa;
         border-radius: 9px;
         position: absolute;
+        width: 270px;
+        height: fit-content;
+        transition: .3s;
         &:nth-child(1) {
-            left: 0;
+            left: 45px;
         }
         &:nth-child(2) {
-            left: 360px;
+            left: 405px;
         }
         &:nth-child(3) {
-            left: 720px;
+            left: 765px;
         }
         &:nth-child(4) {
-            left: 1080px;
+            left: 1125px;
         }
         &:nth-child(5) {
-            left: 1440px;
+            left: 1485px;
         }
         &:nth-child(6) {
-            left: 1700px;
+            left: 1845px;
         }
         &:nth-child(7) {
-            left: 2060px;
+            left: 2205px;
         }
         &:nth-child(8) {
-            left: 2420px;
+            left: 2565px;
         }
 
         a {
@@ -164,6 +197,14 @@ export default {
         }
         &:active {
             opacity: 0.8;
+        }
+    }
+
+    .button-noactive {
+        color: #CDCDCD;
+        border-color: #CDCDCD;
+        &:hover {
+            background: transparent;
         }
     }
 }
