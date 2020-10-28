@@ -2,22 +2,26 @@ const mainNav = [
     {
         id: 1,
         title: 'About the shelter',
-        href: '#'
+        href: '#',
+        active: 'active'
     },
     {
         id: 2,
         title: 'Our pets',
-        href: '#'
+        href: '#',
+        active: ''
     },    
     {
         id: 3,
         title: 'Help the shelter',
-        href: '#'
+        href: '#',
+        active: ''
     },    
     {
         id: 4,
         title: 'Contacts',
-        href: '#'
+        href: '#',
+        active: ''
     },
 ]
 

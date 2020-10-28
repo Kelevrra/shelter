@@ -30,12 +30,14 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: auto;
+    height: fit-content;
     width: 1280px;
     margin: 0 auto;
+    min-height: 750px;
 
     &-wrapper {
         width: 465px;
+        margin-bottom: 100px;
     }
 
     &__title {
@@ -72,6 +74,13 @@ export default {
         &:hover {
             background: #FDDCC4;
         }
+    }
+
+    &__picture {
+        margin-top: auto;
+    }
+    &__image {
+        vertical-align:bottom;
     }
 }
 </style>

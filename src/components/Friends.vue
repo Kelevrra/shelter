@@ -93,6 +93,9 @@ export default {
         font-size: 35px;
         line-height: 1.3;
         color: #545454;
+        font-style: normal;
+        font-weight: normal;
+        text-align: center;
         span {
             display: block;
         }
@@ -224,6 +227,8 @@ export default {
 
     &__toggle-link {
         font-family: Georgia, sans-serif;
+        display: block;
+        text-align: center;
         text-decoration: none;
         font-size: 17px;
         line-height: 48px;
@@ -233,6 +238,9 @@ export default {
         border-radius: 100px;
         &:hover {
             background: #FDDCC4;
+        }
+        &:active {
+            opacity: 0.8;
         }
     }
 }

@@ -9,7 +9,7 @@
                 <li class="nav-item"
                     v-for="item in mainNav"
                     :key="item.id">
-                    <a class="nav-link" href="#">{{ item.title }}</a>
+                    <a class="nav-link" :class="item.active" href="#">{{ item.title }}</a>
                 </li>
             </ul>
         </nav>
@@ -35,6 +35,7 @@ export default {
     align-items: center;
     margin: 0 auto;
     max-width: 1200px;
+    min-height: 180px;
 
     &__logo {
         text-decoration: none;
@@ -74,23 +75,34 @@ export default {
             line-height: 1.6;
 
             .nav-item {
+
                 .nav-link {
+                    position: relative;
                     text-decoration: none;
                     color: #CDCDCD;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        bottom: -5px;
+                        width: 0;
+                        height: 2px;
+                        transition: .3s;
+                    }
                     &:hover {
                         color: #FAFAFA;
                     }
-                    &--active {
-                        position: relative;
-                        color: #FAFAFA;
-                        &:before {
-                            content: '';
-                            position: absolute;
-                            bottom: -7px;
-                            width: 100%;
-                            height: 2px;
-                            background: #F1CDB3;
-                        }
+                    &:hover:before {
+                        width: 100%;
+                        background: #F1CDB3;
+                        transition: .3s;
+                    }
+                }
+                .active {
+                    color: #FAFAFA;
+                    &:before {
+                        bottom: -5px;
+                        width: 100%;
+                        background: #F1CDB3;
                     }
                 }
             }
