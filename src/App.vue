@@ -4,6 +4,7 @@
         <About />
         <Friends />
         <HelpShelter />
+        <Additional />
     </div>
 </template>
 
@@ -12,6 +13,7 @@ import TopWrapper from '@/components/TopWrapper'
 import About from '@/components/About'
 import Friends from '@/components/Friends'
 import HelpShelter from '@/components/HelpShelter'
+import Additional from '@/components/Additional'
 
 export default {
     name: 'App',
@@ -19,7 +21,8 @@ export default {
         TopWrapper,
         About,
         Friends,
-        HelpShelter
+        HelpShelter,
+        Additional
     }
 }
 </script>
