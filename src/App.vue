@@ -5,6 +5,7 @@
         <Friends />
         <HelpShelter />
         <Additional />
+        <Footer />
     </div>
 </template>
 
@@ -14,6 +15,7 @@ import About from '@/components/About'
 import Friends from '@/components/Friends'
 import HelpShelter from '@/components/HelpShelter'
 import Additional from '@/components/Additional'
+import Footer from '@/components/Footer'
 
 export default {
     name: 'App',
@@ -22,7 +24,8 @@ export default {
         About,
         Friends,
         HelpShelter,
-        Additional
+        Additional,
+        Footer
     }
 }
 </script>
