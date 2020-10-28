@@ -33,9 +33,12 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-    max-width: 1200px;
-    min-height: 180px;
+    width: 1200px;
+    height: 180px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
 
     &__logo {
         text-decoration: none;
@@ -43,9 +46,9 @@ export default {
         h1 {
             font-family: Georgia, sans-serif;
             font-size: 32px;
-            line-height: 110%;
+            line-height: 1.1;
             letter-spacing: 0.06em;
-            color: #F1CDB3;
+            color: #545454;
             font-style: normal;
             font-weight: normal;
             margin: 0 0 7px 0;
@@ -56,10 +59,8 @@ export default {
             font-size: 13px;
             line-height: 15px;
             letter-spacing: 0.1em;
-            font-style: normal;
-            font-weight: normal;
-            color: #FFFFFF;
             padding-left: 3px;
+            color: #292929;
         }
     }
 
@@ -75,11 +76,10 @@ export default {
             line-height: 1.6;
 
             .nav-item {
-
                 .nav-link {
                     position: relative;
                     text-decoration: none;
-                    color: #CDCDCD;
+                    color: #545454;
                     &:before {
                         content: '';
                         position: absolute;
@@ -89,7 +89,7 @@ export default {
                         transition: .3s;
                     }
                     &:hover {
-                        color: #FAFAFA;
+                        color: #292929;
                     }
                     &:hover:before {
                         width: 100%;
@@ -109,5 +109,4 @@ export default {
         }
     }
 }
-
 </style>

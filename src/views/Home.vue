@@ -18,7 +18,6 @@ import Additional from '@/components/Additional'
 import Footer from '@/components/Footer'
 
 export default {
-    name: 'App',
     components: {
         TopWrapper,
         About,
