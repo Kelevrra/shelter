@@ -1,19 +1,25 @@
 <template>
     <div id="app">
         <TopWrapper />
+        <About />
         <Friends />
+        <HelpShelter />
     </div>
 </template>
 
 <script>
 import TopWrapper from '@/components/TopWrapper'
+import About from '@/components/About'
 import Friends from '@/components/Friends'
+import HelpShelter from '@/components/HelpShelter'
 
 export default {
     name: 'App',
     components: {
         TopWrapper,
-        Friends
+        About,
+        Friends,
+        HelpShelter
     }
 }
 </script>
