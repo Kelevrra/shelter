@@ -60,7 +60,7 @@ const pets = [
         parasites: ['none']
     },
     {
-        id: '6',
+        id: 6,
         name: 'Timmy',
         img: require('../assets/images/pets-timmy.png'),
         type: 'Cat',

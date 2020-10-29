@@ -83,4 +83,48 @@ export default {
         vertical-align:bottom;
     }
 }
+@media(max-width: 1280px) {
+    .intro {
+        width: 1000px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+@media(max-width: 1050px) {
+    .intro {
+        width: 100%;
+        max-width: 768px;
+        height: 300px;
+        justify-content: center;
+        min-height: 450px;
+        padding: 0;
+
+        &-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        &__title {
+            padding: 0;
+        }
+
+        &__picture {
+            display: none;
+        }
+    }
+}
+@media(max-width: 768px) {
+    .intro {
+        &__title {
+            font-size: 30px;
+        }
+
+        &__description {
+            width: 95%;
+        }
+    }
+}
 </style>

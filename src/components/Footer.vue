@@ -43,6 +43,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
+    padding-top: 20px;
     display: flex;
     justify-content: center;
     background: radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;

@@ -5,11 +5,20 @@
             <span>Shelter for pets in Boston</span>
         </a>
         <nav class="header__nav">
-            <ul class="nav-list">
+            <a class="status-button" href="#" 
+                :class="menuStatusButton"
+                v-on:click="menu()">
+            </a>
+            <ul class="nav-list"
+                :class="menuStatus">
                 <li class="nav-item"
                     v-for="item in mainNav"
                     :key="item.id">
-                    <a class="nav-link" :class="item.active" :href="item.url">{{ item.title }}</a>
+                    <a class="nav-link" 
+                    :class="item.active" 
+                    :href="item.url">
+                        {{ item.title }}
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -22,7 +31,20 @@ import mainNav from '@/data/main-nav.js'
 export default {
     data() {
         return {
-            mainNav
+            mainNav,
+            menuStatus: 'hidden',
+            menuStatusButton: ''
+        }
+    },
+    methods: {
+        menu() {
+           if ( this.menuStatus === 'showed') {
+               this.menuStatus = 'hidden'
+               this.menuStatusButton = ''
+            } else {
+                this.menuStatus = 'showed'
+                this.menuStatusButton = 'status-button--active'
+            }
         }
     }
 }
@@ -64,6 +86,10 @@ export default {
     }
 
     &__nav {
+        .status-button {
+            display: none;
+        }
+
         .nav-list {
             list-style: none;
             display: flex;
@@ -75,7 +101,6 @@ export default {
             line-height: 1.6;
 
             .nav-item {
-
                 .nav-link {
                     position: relative;
                     text-decoration: none;
@@ -109,5 +134,102 @@ export default {
         }
     }
 }
+@media(max-width: 1200px) {
+    .header {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+@media(max-width: 768px) {
+    .header {
+        max-width: 768px;
+        min-height: 120px;
 
+        &__nav {
+            position: absolute;
+            right: 0;
+            max-width: 768px;
+            width: 100%;
+
+            .status-button {
+                display: block;
+                width: 30px;
+                height: 2px;
+                background: #ffffff;
+                border: none;
+                cursor: pointer;
+                outline: none;
+                transition: .5s;
+                position: fixed;
+                right: 30px;
+                top: 50px;
+                &:before,
+                &:after {
+                    position: absolute;
+                    content: '';
+                    width: 30px;
+                    height: 2px;
+                    top: -10px;
+                    left: 0;
+                    background: #ffffff;
+                }
+                &:after {
+                    top: 10px;
+                }
+                &:before {
+                    top: -10px;
+                }
+                &:active {
+                    opacity: 0.5;
+                }
+                    &--active {
+                    background: transparent;
+                    transform: rotate(180deg);
+                    &:after {
+                        transform: rotate(45deg);
+                        top: 0;
+                        transition: .7s;
+                    }
+                    &:before {
+                        transform: rotate(-45deg);
+                        top: 0;
+                        transition: .7s;
+                    }
+                }
+            }
+
+            .hidden,
+            .showed  {
+                display: block;
+                position: absolute;
+                width: 80%;
+                left: 50%;
+                transform: translate(-50%, 0);
+                transition: .5s;
+                background: radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%),#211F20;
+                background-image: url('../assets/images/start-screen-background.png');
+                box-shadow: 0px 2px 100px 50px rgba(13, 13, 13, 0.7);
+                
+                .nav-item {
+                    .nav-link {
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        line-height: 50px;
+                        font-size: 20px;
+                        left: 0;
+                    }
+                }
+            }
+
+            .hidden {
+                top: -100vh;
+            }
+
+            .showed {
+                top: 0;
+            }
+        }
+    }
+}
 </style>
