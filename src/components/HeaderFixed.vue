@@ -36,9 +36,11 @@ export default {
     width: 1200px;
     height: 180px;
     position: fixed;
+    z-index: 100;
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
+    background: white;
 
     &__logo {
         text-decoration: none;
@@ -98,7 +100,7 @@ export default {
                     }
                 }
                 .active {
-                    color: #FAFAFA;
+                    color: #292929;
                     &:before {
                         bottom: -5px;
                         width: 100%;

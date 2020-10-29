@@ -16,6 +16,7 @@ import Friends from '@/components/Friends'
 import HelpShelter from '@/components/HelpShelter'
 import Additional from '@/components/Additional'
 import Footer from '@/components/Footer'
+import mainNav from '@/data/main-nav.js'
 
 export default {
     components: {
@@ -25,6 +26,20 @@ export default {
         HelpShelter,
         Additional,
         Footer
+    },
+    data() {
+        return {
+            mainNav
+        }
+    },
+    methods: {
+        actualPage() {
+            this.mainNav.map(el => el.active = '')
+            this.mainNav[0].active = 'active'
+        }
+    },
+    mounted() {
+        this.actualPage()
     }
 }
 </script>

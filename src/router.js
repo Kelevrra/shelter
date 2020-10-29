@@ -15,6 +15,14 @@ export default new Router({
         {
             path: '/our-pets',
             component: () => import('./views/OurPets.vue')
+        },
+        {
+            path: '/help-us',
+            component: () => import('./views/HelpUs.vue')
+        },
+        {
+            path: '/contacts',
+            component: () => import('./views/Contacts.vue')
         }
     ]
 })

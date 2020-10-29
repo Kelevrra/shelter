@@ -14,13 +14,13 @@ const mainNav = [
     {
         id: 3,
         title: 'Help the shelter',
-        url: '/',
+        url: '/help-us',
         active: ''
     },    
     {
         id: 4,
         title: 'Contacts',
-        url: '/',
+        url: '/contacts',
         active: ''
     },
 ]
