@@ -2,7 +2,7 @@
     <div class="help-us">
         <HeaderFixed />
         <h2>
-            Sorry, this page not exist
+            Sorry, this page is not exist
             <span>:)</span>
         </h2>
         <picture>
