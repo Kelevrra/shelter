@@ -97,9 +97,17 @@ export default {
         },
         cataloguePageFirst() {
             this.pages.index = 1
+            if (document.documentElement.clientWidth < 1270) {
+                this.pages.displayItemsFrom = 0
+                this.pages.displayItemsTo = 4
+            }
         },
         cataloguePageLast() {
             this.pages.index = this.pages.amount
+            if (document.documentElement.clientWidth < 1270) {
+                this.pages.displayItemsFrom = this.pages.amount * 4 - 4
+                this.pages.displayItemsTo = this.pages.amount * 4
+            }
         },
         buttonStatus() {
             setInterval(() => {
