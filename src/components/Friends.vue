@@ -275,4 +275,9 @@ export default {
         }
     }
 }
+@media(max-width: 360px) {
+    .friends {
+        overflow: hidden;
+    }
+}
 </style>

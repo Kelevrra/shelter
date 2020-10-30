@@ -142,13 +142,11 @@ export default {
 }
 @media(max-width: 768px) {
     .header {
-        max-width: 768px;
         min-height: 120px;
 
         &__nav {
             position: absolute;
             right: 0;
-            max-width: 768px;
             width: 100%;
 
             .status-button {
@@ -160,9 +158,9 @@ export default {
                 cursor: pointer;
                 outline: none;
                 transition: .5s;
-                position: fixed;
-                right: 30px;
-                top: 50px;
+                position: absolute;
+                right: 25px;
+                top: -10px;
                 &:before,
                 &:after {
                     position: absolute;
@@ -206,8 +204,7 @@ export default {
                 left: 50%;
                 transform: translate(-50%, 0);
                 transition: .5s;
-                background: radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%),#211F20;
-                background-image: url('../assets/images/start-screen-background.png');
+                background: rgb(232, 227, 227);
                 box-shadow: 0px 2px 100px 50px rgba(13, 13, 13, 0.7);
                 
                 .nav-item {
@@ -218,6 +215,10 @@ export default {
                         line-height: 50px;
                         font-size: 20px;
                         left: 0;
+                        color: #545454;
+                        &:hover {
+                            color: #292929;
+                        }
                     }
                 }
             }
@@ -227,7 +228,7 @@ export default {
             }
 
             .showed {
-                top: 0;
+                top: 10px;
             }
         }
     }

@@ -5,11 +5,18 @@
             <span>Shelter for pets in Boston</span>
         </a>
         <nav class="header__nav">
-            <ul class="nav-list">
+            <a class="status-button" href="#" 
+                :class="menuStatusButton"
+                v-on:click="menu()">
+            </a>
+            <ul class="nav-list"
+                :class="menuStatus">
                 <li class="nav-item"
                     v-for="item in mainNav"
                     :key="item.id">
-                    <a class="nav-link" :class="item.active" :href="item.url">{{ item.title }}</a>
+                    <a class="nav-link" 
+                        :class="item.active" 
+                        :href="item.url">{{ item.title }}</a>
                 </li>
             </ul>
         </nav>
@@ -22,7 +29,20 @@ import mainNav from '@/data/main-nav.js'
 export default {
     data() {
         return {
-            mainNav
+            mainNav,
+            menuStatus: 'hidden',
+            menuStatusButton: ''
+        }
+    },
+    methods: {
+        menu() {
+           if ( this.menuStatus === 'showed') {
+               this.menuStatus = 'hidden'
+               this.menuStatusButton = ''
+            } else {
+                this.menuStatus = 'showed'
+                this.menuStatusButton = 'status-button--active'
+            }
         }
     }
 }
@@ -67,6 +87,10 @@ export default {
     }
 
     &__nav {
+        .status-button {
+            display: none;
+        }
+
         .nav-list {
             list-style: none;
             display: flex;
@@ -106,6 +130,117 @@ export default {
                         width: 100%;
                         background: #F1CDB3;
                     }
+                }
+            }
+        }
+    }
+}
+@media(max-width: 1200px) {
+    .header {
+        width: 90%;
+    }
+}
+@media(max-width: 768px) {
+    @media(max-width: 768px) {
+    .header {
+        min-height: 120px;
+
+        &__nav {
+            position: absolute;
+            right: 0;
+            width: 100%;
+
+            .status-button {
+                display: block;
+                width: 30px;
+                height: 2px;
+                background: #000000;
+                border: none;
+                cursor: pointer;
+                outline: none;
+                transition: .5s;
+                position: absolute;
+                right: 25px;
+                top: -10px;
+                &:before,
+                &:after {
+                    position: absolute;
+                    content: '';
+                    width: 30px;
+                    height: 2px;
+                    top: -10px;
+                    left: 0;
+                    background: #000000;
+                }
+                &:after {
+                    top: 10px;
+                }
+                &:before {
+                    top: -10px;
+                }
+                &:active {
+                    opacity: 0.5;
+                }
+                &--active {
+                    background: transparent;
+                    transform: rotate(180deg);
+                    &:after {
+                        transform: rotate(45deg);
+                        top: 0;
+                        transition: .7s;
+                    }
+                    &:before {
+                        transform: rotate(-45deg);
+                        top: 0;
+                        transition: .7s;
+                    }
+                }
+            }
+
+            .hidden,
+            .showed  {
+                display: block;
+                position: absolute;
+                width: 80%;
+                left: 50%;
+                transform: translate(-50%, 0);
+                transition: .5s;
+                background: white;
+                box-shadow: 0px 2px 100px 50px rgba(13, 13, 13, 0.4);
+                
+                .nav-item {
+                    border-bottom: 1px solid #CDCDCD;
+
+                    .active {
+                        &:before {
+                            bottom: -2px;
+                        }
+                    }
+
+                    .nav-link {
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        line-height: 50px;
+                        font-size: 20px;
+                        left: 0;
+                        color: #545454;
+                        &:hover {
+                            color: #292929;
+                        }
+                        &:hover:before {
+                            bottom: -2px;
+                        }
+                    }
+                }
+            }
+
+                .hidden {
+                    top: -100vh;
+                }
+
+                .showed {
+                    top: 10px;
                 }
             }
         }

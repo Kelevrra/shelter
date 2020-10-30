@@ -32,9 +32,6 @@ export default {
     justify-content: center;
     background: #F6F6F6;
     padding: 80px 0 100px;
-    &__image {
-
-    }
 
     &-wrapper {
         width: 380px;
@@ -97,6 +94,39 @@ export default {
         line-height: 1.5;
         color: #B2B2B2;
         margin-top: 20px;
+    }
+}
+
+@media(max-width: 900px) {
+    .additional {
+        flex-direction: column;
+        padding: 30px;
+    }
+}
+@media(max-width: 768px) {
+    .additional {
+        text-align: center;
+
+        &__title {
+            padding: 0;
+            font-size: 30px;
+        }
+
+        &__image {
+            display: none;
+        }
+
+        &-wrapper {
+            width: 100%;
+            margin: 0;
+        }
+
+        &__link {
+            width: 90%;
+            font-size: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }
 

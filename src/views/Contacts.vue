@@ -5,7 +5,11 @@
             Sorry, this page not exist
             <span>:)</span>
         </h2>
-        <img src="../assets/images/funny-dog.jpg" alt="">
+        <picture>
+            <source media="(min-width: 1280px)" srcset="../assets/images/funny-dog.jpg">
+            <source media="(min-width: 768px)" srcset="../assets/images/funny-dog-tablet.jpg">
+            <img src="../assets/images/funny-dog-mobile.jpg" alt="">
+        </picture>
     </div>
 </template>
 
@@ -38,6 +42,7 @@ export default {
 .help-us {
     text-align: center;
     padding-top: 200px;
+    
     h2 {
         font-size: 45px;
         margin: 0;

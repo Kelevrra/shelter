@@ -8,7 +8,7 @@
             <div class="catalogue__carousel">
                 <ul class="catalogue__list">
                     <li class="catalogue__item"
-                        v-for="pet in pets" 
+                        v-for="pet in petsList" 
                         :key="pet.id">
                         <a href="#">
                             <img :src="pet.img" :alt="pet.name + ' ' + pet.type">
@@ -19,12 +19,19 @@
                 </ul>
             </div>
             <div class="panel-list">
-                <button class="panel-button noactive">{{ buttons.toFirst }}</button>
-                <button class="panel-button noactive">{{ buttons.left }}</button>
-                <button class="panel-button index"
-                    v-for="i in pages" :key="i">{{ i }}</button>
-                <button class="panel-button active">{{ buttons.right }}</button>
-                <button class="panel-button active">{{ buttons.toLast }}</button>
+                <button class="panel-button"
+                    :class="buttons.prevStatus"
+                    v-on:click="cataloguePageFirst()">{{ buttons.toFirst }}</button>
+                <button class="panel-button"
+                    :class="buttons.prevStatus"
+                    v-on:click="cataloguePagePrev()">{{ buttons.left }}</button>
+                <button class="panel-button index">{{ pages.index }}</button>
+                <button class="panel-button"
+                    :class="buttons.nextStatus"
+                    v-on:click="cataloguePageNext()">{{ buttons.right }}</button>
+                <button class="panel-button"
+                    :class="buttons.nextStatus"
+                    v-on:click="cataloguePageLast()">{{ buttons.toLast }}</button>
             </div>
         </div>
     </section>
@@ -37,16 +44,67 @@ export default {
     data() {
         return {
             pets,
+            petsList: pets,
             buttons: {
                 left: '<',
                 toFirst: '<<',
                 right: '>',
-                toLast: '>>'
+                toLast: '>>',
+                prevStatus: 'noactive',
+                nextStatus: 'active'
             },
-            pages: [
-                1
-            ]
+            pages: {
+                index: 1,
+                amount: 0,
+                displayItemsFrom: 0,
+                displayItemsTo: 8
+            }
         }
+    },
+    methods: {
+        cataloguePageNext() {
+            if(this.pages.index > 0 && this.pages.index < this.pages.amount) {
+                this.pages.index = this.pages.index + 1
+            }
+        },
+        cataloguePagePrev() {
+            if(this.pages.index > 1 && this.pages.index <= this.pages.amount) {
+                this.pages.index = this.pages.index - 1
+            }
+        },
+        cataloguePageFirst() {
+            this.pages.index = 1
+        },
+        cataloguePageLast() {
+            this.pages.index = this.pages.amount
+        },
+        buttonStatus() {
+            setInterval(() => {
+                if(this.pages.amount === 1) {
+                    this.buttons.prevStatus = 'noactive'
+                    this.buttons.nextStatus = 'noactive'
+                } 
+                if(this.pages.amount > 1) this.buttons.nextStatus = 'active'
+                if (this.pages.index > 1) this.buttons.prevStatus = 'active'
+                if (this.pages.index === this.pages.amount) this.buttons.nextStatus = 'noactive'
+                if (this.pages.index === 1) this.buttons.prevStatus = 'noactive'
+            }, 500)
+        },
+        whatcQuerry() {
+            setInterval(() => {
+                if (document.documentElement.clientWidth < 1270) {
+                    this.pages.amount = Math.ceil(this.pets.length / 4)
+                } if (document.documentElement.clientWidth < 768) {
+                    this.pages.amount = Math.ceil(this.pets.length / 2)
+                } if (document.documentElement.clientWidth > 1270) {
+                    this.pages.amount = Math.ceil(this.pets.length / 8)
+                }
+            }, 1000)
+        }
+    },
+    mounted() {
+        this.whatcQuerry(),
+        this.buttonStatus()
     }
 }
 </script>
@@ -72,23 +130,18 @@ export default {
         padding: 20px 35px 35px;
         margin: 0 auto;
         overflow: hidden;
-        position: relative;
-        height: 1070px;
-        z-index: 10;
     }
 
     &__list {
-        // position: relative;
-        position: absolute;
         list-style: none;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        width: 1200px;
+        // justify-content: space-between;
+        // width: 1200px;
     }
 
     &__item {
-        margin-top: 35px;
+        margin: 15px;
         background: #fafafa;
         border-radius: 9px;
         width: 270px;
@@ -134,10 +187,7 @@ export default {
         }
     }
     .panel-list {
-        position: absolute ;
-        bottom: 60px;
-        left: 50%;
-        transform: translate(-50%, 0);
+        margin: 30px auto;
         width: 320px;
         display: flex;
         justify-content: space-between;
@@ -150,6 +200,7 @@ export default {
             background: transparent;
             font-family: Georgia, sans-serif;
             font-size: 20px;
+            cursor: pointer;
         }
         .noactive {
             border: 2px solid #CDCDCD;
@@ -167,7 +218,7 @@ export default {
 @media(max-width: 1270px) {
     .catalogue {
         &-wrapper {
-            width: 680px;
+            width: 620px;
         }
     }
 }

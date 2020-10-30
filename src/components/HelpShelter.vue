@@ -9,6 +9,8 @@
                 <span>{{ item.description }}</span>
             </li>
         </ul>
+        <div :class="button.status"
+            v-on:click="showAll()">{{ button.text }}</div>
     </section>
 </template>
 
@@ -18,8 +20,32 @@ import helpShelter from '@/data/help-shelter.js'
 export default {
     data() {
         return {
-            helpShelter
+            helpShelter,
+            helpList: helpShelter.helpList,
+            button: {
+                status: 'noactive',
+                text: 'Show all...'
+            }
         }
+    },
+    methods: {
+        whatcQuerry() {
+            if (document.documentElement.clientWidth > 525) {
+                this.button.status = 'noactive'
+            } if (document.documentElement.clientWidth < 525) {
+                this.button.status = 'active'
+                this.helpShelter.helpList = this.helpShelter.helpList.slice(0, 2)
+            } if (document.documentElement.clientWidth < 370) {
+                this.helpShelter.helpList = this.helpShelter.helpList.slice(0, 1)
+            }
+        },
+        showAll() {
+            this.helpShelter.helpList = this.helpList
+            this.button.status = 'noactive'
+        }
+    },
+    mounted() {
+        this.whatcQuerry()
     }
 }
 </script>
@@ -32,8 +58,19 @@ export default {
     justify-content: center;
     padding: 40px;
 
+    .noactive {
+        display: none;
+    }
+
+    .active {
+        display: block;
+        font-family: Georgia, sans-serif;
+        font-size: 18px;
+        color: #545454;
+    }
+
     &__title {
-        font-family: Georgia;
+        font-family: Georgia, sans-serif;
         font-style: normal;
         font-weight: normal;
         font-size: 35px;
@@ -64,6 +101,36 @@ export default {
             line-height: 1.2;
             color: #545454;
         }
+    }
+}
+@media(max-width: 1200px) {
+    .help {
+        &__list {
+            width: 100%;
+        }
+    }
+}
+@media(max-width: 768px) {
+    .help {
+        &__title  {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        &__item {
+            width: 150px;
+            height: 120px;
+
+            span {
+                font-size: 15px;
+                margin-top: 15px;
+            }
+        }
+    }
+}
+@media(max-width: 525px) {
+    .help {
+
     }
 }
 

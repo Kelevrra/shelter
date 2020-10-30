@@ -9,7 +9,7 @@
             <source media="(min-width: 1280px)" :srcset="intro.imageDesktop">
             <source media="(min-width: 768px)" :srcset="intro.imageTablet">
             <img class="intro__image" :src="intro.imageMobile" alt="Cutie puppy">
-        </picture>
+        </picture> 
     </section>
 </template>
 
@@ -85,9 +85,10 @@ export default {
 }
 @media(max-width: 1280px) {
     .intro {
-        width: 1000px;
+        // width: 1000px;
         padding-left: 25px;
         padding-right: 25px;
+        min-height: 550px;
     }
 }
 @media(max-width: 1050px) {
@@ -96,8 +97,8 @@ export default {
         max-width: 768px;
         height: 300px;
         justify-content: center;
-        min-height: 450px;
-        padding: 0;
+        min-height: 350px;
+        padding: 0 0 60px;
 
         &-wrapper {
             display: flex;
@@ -118,6 +119,13 @@ export default {
 }
 @media(max-width: 768px) {
     .intro {
+        width: 100%;
+        max-width: 520px;
+
+        &-wrapper {
+            width: 90%;
+        }
+
         &__title {
             font-size: 30px;
         }
@@ -125,6 +133,13 @@ export default {
         &__description {
             width: 95%;
         }
+    }
+}
+@media(max-width: 520px) {
+    .intro {
+        width: 100%;
+        max-width: 320px;
+        padding: 30px 0 30px;
     }
 }
 </style>

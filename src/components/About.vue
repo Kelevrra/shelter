@@ -25,7 +25,7 @@ export default {
 .about {
     display: flex;
     justify-content: center;
-    padding: 80px 80px 100px;
+    padding: 80px 0 100px;
     margin: 0 auto;
     width: 1200px;
 
@@ -56,6 +56,31 @@ export default {
         font-size: 15px;
         line-height: 1.6;
         color: #4C4C4C;
+    }
+}
+@media(max-width: 1200px) {
+    .about {
+        width: 100%;
+    }
+}
+@media(max-width: 900px) {
+    .about {
+        padding: 30px 0 30px;
+        &__image {
+            display: none;
+        }
+
+        .about-wrapper {
+            margin-left: 0;
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        &__title {
+            font-size: 30px;
+            padding: 0;
+            text-align: center;
+        }
     }
 }
 

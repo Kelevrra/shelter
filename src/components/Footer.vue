@@ -46,8 +46,10 @@ export default {
     padding-top: 20px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     background: radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
     background: url('../assets/images/footer-background.png') no-repeat;
+    background-size: cover;
     ul {
         list-style: none;
         li {
@@ -86,6 +88,14 @@ export default {
 
     &__image {
         vertical-align: bottom;
+    }
+}
+
+@media(max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 }
 </style>

@@ -1,31 +1,31 @@
 <template>
     <div>
         <TopWrapper />
-        <!-- <About />
+        <About />
         <Friends />
         <HelpShelter />
         <Additional />
-        <Footer /> -->
+        <Footer />
     </div>
 </template>
 
 <script>
 import TopWrapper from '@/components/TopWrapper'
-// import About from '@/components/About'
-// import Friends from '@/components/Friends'
-// import HelpShelter from '@/components/HelpShelter'
-// import Additional from '@/components/Additional'
-// import Footer from '@/components/Footer'
+import About from '@/components/About'
+import Friends from '@/components/Friends'
+import HelpShelter from '@/components/HelpShelter'
+import Additional from '@/components/Additional'
+import Footer from '@/components/Footer'
 import mainNav from '@/data/main-nav.js'
 
 export default {
     components: {
         TopWrapper,
-        // About,
-        // Friends,
-        // HelpShelter,
-        // Additional,
-        // Footer
+        About,
+        Friends,
+        HelpShelter,
+        Additional,
+        Footer
     },
     data() {
         return {
