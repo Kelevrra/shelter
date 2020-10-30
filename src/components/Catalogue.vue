@@ -75,8 +75,6 @@ export default {
                     this.pages.displayItemsFrom = this.pages.displayItemsFrom + 4
                     this.pages.displayItemsTo = this.pages.displayItemsTo + 4
                 }
-// mobile
-
             }
         },
         cataloguePagePrev() {
@@ -92,7 +90,6 @@ export default {
                     this.pages.displayItemsFrom = this.pages.displayItemsFrom - 4
                     this.pages.displayItemsTo = this.pages.displayItemsTo - 4
                 }
-// mobile
             }
         },
         cataloguePageFirst() {
@@ -236,6 +233,9 @@ export default {
         justify-content: space-between;
 
         .panel-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 52px;
             height: 52px;
             border-radius: 100px;
