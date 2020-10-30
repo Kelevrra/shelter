@@ -1,25 +1,27 @@
 <template>
     <header class="header">
-        <a class="header__logo" href="/">
-            <h1>Cozy House</h1>
-            <span>Shelter for pets in Boston</span>
-        </a>
-        <nav class="header__nav">
-            <a class="status-button" href="#" 
-                :class="menuStatusButton"
-                v-on:click="menu()">
+        <div class="header-inner">
+            <a class="header__logo" href="/">
+                <h1>Cozy House</h1>
+                <span>Shelter for pets in Boston</span>
             </a>
-            <ul class="nav-list"
-                :class="menuStatus">
-                <li class="nav-item"
-                    v-for="item in mainNav"
-                    :key="item.id">
-                    <a class="nav-link" 
-                        :class="item.active" 
-                        :href="item.url">{{ item.title }}</a>
-                </li>
-            </ul>
-        </nav>
+            <nav class="header__nav">
+                <a class="status-button" href="#" 
+                    :class="menuStatusButton"
+                    v-on:click="menu()">
+                </a>
+                <ul class="nav-list"
+                    :class="menuStatus">
+                    <li class="nav-item"
+                        v-for="item in mainNav"
+                        :key="item.id">
+                        <a class="nav-link" 
+                            :class="item.active" 
+                            :href="item.url">{{ item.title }}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 </template>
 
@@ -50,17 +52,24 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 1200px;
-    height: 180px;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
     background: white;
+    position: fixed;
+    height: 180px;
+    width: 100vh;
+    top: 0;
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 1200px;
+        height: 180px;
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        background: white;
+    }
 
     &__logo {
         text-decoration: none;
@@ -137,13 +146,18 @@ export default {
 }
 @media(max-width: 1200px) {
     .header {
-        width: 90%;
+        .header-inner {
+            width: 90%;
+        }
     }
 }
 @media(max-width: 768px) {
     @media(max-width: 768px) {
     .header {
-        min-height: 120px;
+        height: 100px;
+        .header-inner {
+            height: 100px;
+        }
 
         &__nav {
             position: absolute;

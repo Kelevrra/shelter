@@ -65,11 +65,34 @@ export default {
         cataloguePageNext() {
             if(this.pages.index > 0 && this.pages.index < this.pages.amount) {
                 this.pages.index = this.pages.index + 1
+// desktop
+                if (document.documentElement.clientWidth > 1270) {
+                    this.pages.displayItemsFrom = this.pages.displayItemsFrom + 8
+                    this.pages.displayItemsTo = this.pages.displayItemsTo + 8
+                }
+// tablet
+                if (document.documentElement.clientWidth < 1270) {
+                    this.pages.displayItemsFrom = this.pages.displayItemsFrom + 4
+                    this.pages.displayItemsTo = this.pages.displayItemsTo + 4
+                }
+// mobile
+
             }
         },
         cataloguePagePrev() {
             if(this.pages.index > 1 && this.pages.index <= this.pages.amount) {
                 this.pages.index = this.pages.index - 1
+// desktop
+                if (document.documentElement.clientWidth > 1270) {
+                    this.pages.displayItemsFrom = this.pages.displayItemsFrom - 8
+                    this.pages.displayItemsTo = this.pages.displayItemsTo - 8
+                }
+// tablet
+                if (document.documentElement.clientWidth < 1270) {
+                    this.pages.displayItemsFrom = this.pages.displayItemsFrom - 4
+                    this.pages.displayItemsTo = this.pages.displayItemsTo - 4
+                }
+// mobile
             }
         },
         cataloguePageFirst() {
@@ -91,13 +114,25 @@ export default {
             }, 500)
         },
         whatcQuerry() {
+            if (document.documentElement.clientWidth < 1270) {
+                this.pages.displayItemsTo = 4
+            }
+            if (document.documentElement.clientWidth < 768) {
+                // this.pages.displayItemsTo = 2
+            }
             setInterval(() => {
                 if (document.documentElement.clientWidth < 1270) {
                     this.pages.amount = Math.ceil(this.pets.length / 4)
+                    //tablet
+                    this.petsList = this.pets.slice(this.pages.displayItemsFrom, this.pages.displayItemsTo)
                 } if (document.documentElement.clientWidth < 768) {
-                    this.pages.amount = Math.ceil(this.pets.length / 2)
+                    // this.pages.amount = Math.ceil(this.pets.length / 2)
+                    //mobile
+                    // this.petsList = this.pets.slice(this.pages.displayItemsFrom, this.pages.displayItemsTo)
                 } if (document.documentElement.clientWidth > 1270) {
                     this.pages.amount = Math.ceil(this.pets.length / 8)
+                    this.pages.displayItemsTo = 8
+                    this.petsList = this.pets.slice(this.pages.displayItemsFrom, this.pages.displayItemsTo)
                 }
             }, 1000)
         }
@@ -218,7 +253,14 @@ export default {
 @media(max-width: 1270px) {
     .catalogue {
         &-wrapper {
-            width: 620px;
+            width: 600px;
+        }
+    }
+}
+@media(max-width: 768px) {
+    .catalogue {
+        &-wrapper {
+            width: 300px;
         }
     }
 }

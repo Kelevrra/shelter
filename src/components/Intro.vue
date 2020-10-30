@@ -83,9 +83,9 @@ export default {
         vertical-align:bottom;
     }
 }
-@media(max-width: 1280px) {
+@media(max-width: 1279px) {
     .intro {
-        // width: 1000px;
+        width: 1000px;
         padding-left: 25px;
         padding-right: 25px;
         min-height: 550px;
