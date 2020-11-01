@@ -10,11 +10,38 @@
                     <li class="catalogue__item"
                         v-for="pet in petsList" 
                         :key="pet.id">
-                        <a href="#">
+                        <a v-on:click="()=>pet.active = 'active'">
                             <img :src="pet.img" :alt="pet.name + ' ' + pet.type">
                             <p>{{ pet.name }}</p>
                             <button>Learn more</button>
                         </a>
+                        <div :class="pet.active">
+                            <button id="close-popup"
+                                value="close"
+                                v-on:click="()=>{
+                                    pet.active = 'noactive'
+                                }"></button>
+                            <img :src="pet.img" 
+                                :alt="pet.name + ' ' + pet.type">
+                            <div>
+                                <h2 class="title">{{ pet.name }}</h2>
+                                <p class="type">{{ pet.type }} - {{ pet.breed }}</p>
+                            
+                            <ul>
+                                <li>Age: {{ pet.age }}</li>
+                                <li
+                                v-for="i in pet.diseases"
+                                :key="i">Inoculations: {{ i }}</li>
+                                <li
+                                v-for="i in pet.diseases"
+                                :key="i">Diseases: {{ i }}</li>
+                                <li 
+                                v-for="i in pet.parasites"
+                                :key="i">Parasites: {{ i }}</li>
+                            </ul>
+                            </div>
+                            <p class="description">{{ pet.description }}</p>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -225,6 +252,66 @@ export default {
                 opacity: 0.8;
             }
         }
+        .noactive {
+    display: none;
+}
+.active {
+    position: fixed;
+    transform: translate(-50%, 0);
+    z-index: 100;
+    top: 20%;
+    left: 50%;
+    width: 750px;
+    min-height: 400px;
+    background: white;
+    padding: 35px;
+    box-shadow: 0px 2px 4035px 4000px rgba(13, 13, 13, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+
+    #close-popup {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        right: 10px;
+        top: 10px;
+        font-family: Georgia, sans-serif;
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            background: #FDDCC4;
+            width: 50%;
+            height: 2px;
+        }
+        &:before {
+            transform: rotate(45deg);
+            left: 9px;
+        }
+        &:after {
+            transform: rotate(-45deg);
+            left: 9px;
+        }
+        &:hover:before,
+        &:hover:after {
+            background: white;
+        }
+    }
+
+    div {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+
+        h2 {
+            font-size: 35px;
+        }
+
+        ul {
+            margin-left: 1rem;
+        }
+    }
+}
     }
     .panel-list {
         margin: 30px auto;

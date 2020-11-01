@@ -9,7 +9,8 @@ const pets = [
         age: '6 months',
         inoculations: ['panleukopenia'],
         diseases: ['none'],
-        parasites: ['none']
+        parasites: ['none'],
+        active: 'noactive'
     },
     {
         id: 2,
@@ -21,7 +22,8 @@ const pets = [
         age: '2 months',
         inoculations: ['none'],
         diseases: ['none'],
-        parasites: ['none']
+        parasites: ['none'],
+        active: 'noactive'
     },
     {
         id: 3,
@@ -33,7 +35,8 @@ const pets = [
         age: '3 years 6 months',
         inoculations: ['adenovirus', 'distemper'],
         diseases: ['right back leg mobility reduced'],
-        parasites: ['none']
+        parasites: ['none'],
+        active: 'noactive'
     },
     {
         id: 4,
@@ -45,7 +48,8 @@ const pets = [
         age: '1 month',
         inoculations: ['parvovirus'],
         diseases: ['none'],
-        parasites: ['none']
+        parasites: ['none'],
+        active: 'noactive'
     },
     {
         id: 5,
@@ -57,7 +61,8 @@ const pets = [
         age: '3 months',
         inoculations: ['parainfluenza'],
         diseases: ['none'],
-        parasites: ['none']
+        parasites: ['none'],
+        active: 'noactive'
     },
     {
         id: 6,
@@ -69,7 +74,8 @@ const pets = [
         age: '2 years 3 months',
         inoculations: ['calicivirus', 'viral rhinotracheitis'],
         diseases: ['kidney stones'],
-        parasites: ['none']
+        parasites: ['none'],
+        active: 'noactive'
     },
     {
         id: 7,
@@ -81,7 +87,8 @@ const pets = [
         age: '2 months',
         inoculations: ['rabies'],
         diseases: ['none'],
-        parasites: ['none']
+        parasites: ['none'],
+        active: 'noactive'
     },
     {
         id: 8,
@@ -93,7 +100,8 @@ const pets = [
         age: '8 years',
         inoculations: ['bordetella bronchiseptica', 'leptospirosis'],
         diseases: ['deafness', 'blindness'],
-        parasites: ['lice', 'fleas']
+        parasites: ['lice', 'fleas'],
+        active: 'noactive'
     }
 ]
 
