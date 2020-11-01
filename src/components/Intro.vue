@@ -3,7 +3,7 @@
         <div class="intro-wrapper">
             <h2 class="intro__title">{{ intro.title }}</h2>
             <p class="intro__description">{{ intro.description }}</p>
-            <a class="intro__toggle" href="#">{{ intro.toggle }}</a>
+            <a class="intro__toggle" href="/our-pets">{{ intro.toggle }}</a>
         </div>
         <picture class="intro__picture">
             <source media="(min-width: 1280px)" :srcset="intro.imageDesktop">

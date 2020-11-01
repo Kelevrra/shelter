@@ -18,9 +18,8 @@
                         <div :class="pet.active">
                             <button id="close-popup"
                                 value="close"
-                                v-on:click="()=>{
-                                    pet.active = 'noactive'
-                                }"></button>
+                                v-on:click="clearAll()">
+                            </button>
                             <img :src="pet.img" 
                                 :alt="pet.name + ' ' + pet.type">
                             <div>
@@ -167,6 +166,11 @@ export default {
                     this.petsList = this.pets.slice(this.pages.displayItemsFrom, this.pages.displayItemsTo)
                 }
             }, 1000)
+        },
+        clearAll() {
+            for(let i = 0; i < this.pets.length; i += 1) {
+                this.pets[i].active = 'noactive'
+            }
         }
     },
     mounted() {

@@ -21,9 +21,7 @@
                         <div :class="pet.active">
                             <button id="close-popup"
                                 value="close"
-                                v-on:click="()=>{
-                                    pet.active = 'noactive'
-                                }"></button>
+                                v-on:click="clearAll()"></button>
                             <img :src="pet.img" 
                                 :alt="pet.name + ' ' + pet.type">
                             <div>
@@ -55,7 +53,7 @@
             :class="buttonNextStatus"
             @click="nextSlide">&rarr;</button>
         </div>
-        <a class="friends__toggle-link" href="#">Get to know the rest</a>
+        <a class="friends__toggle-link" href="/our-pets">Get to know the rest</a>
     </section>
 </template>
 
@@ -102,6 +100,11 @@ export default {
                  this.carouselWidthWatch = (pets.length * 360)-360
             } if (document.documentElement.clientWidth > 1220) {
                 this.carouselWidthWatch = (pets.length * 360)-1080
+            }
+        },
+        clearAll() {
+            for(let i = 0; i < this.pets.length; i += 1) {
+                this.pets[i].active = 'noactive'
             }
         }
     }
