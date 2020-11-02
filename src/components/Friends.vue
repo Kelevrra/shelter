@@ -19,29 +19,32 @@
                             <button type="button">Learn more</button>
                         </a>
                         <div :class="pet.active">
-                            <button id="close-popup"
-                                value="close"
-                                v-on:click="clearAll()"></button>
-                            <img :src="pet.img" 
-                                :alt="pet.name + ' ' + pet.type">
-                            <div>
-                                <h2 class="title">{{ pet.name }}</h2>
-                                <p class="type">{{ pet.type }} - {{ pet.breed }}</p>
-                            
-                            <ul>
-                                <li>Age: {{ pet.age }}</li>
-                                <li
-                                v-for="i in pet.diseases"
-                                :key="i">Inoculations: {{ i }}</li>
-                                <li
-                                v-for="i in pet.diseases"
-                                :key="i">Diseases: {{ i }}</li>
-                                <li 
-                                v-for="i in pet.parasites"
-                                :key="i">Parasites: {{ i }}</li>
-                            </ul>
+                            <div id="overlay"></div>
+                            <div class="wrapper">
+                                <button id="close-popup"
+                                    value="close"
+                                    v-on:click="clearAll()"></button>
+                                <img :src="pet.img" 
+                                    :alt="pet.name + ' ' + pet.type">
+                                <div>
+                                    <h2 class="title">{{ pet.name }}</h2>
+                                    <p class="type">{{ pet.type }} - {{ pet.breed }}</p>
+                                
+                                <ul>
+                                    <li>Age: {{ pet.age }}</li>
+                                    <li
+                                    v-for="i in pet.diseases"
+                                    :key="i">Inoculations: {{ i }}</li>
+                                    <li
+                                    v-for="i in pet.diseases"
+                                    :key="i">Diseases: {{ i }}</li>
+                                    <li 
+                                    v-for="i in pet.parasites"
+                                    :key="i">Parasites: {{ i }}</li>
+                                </ul>
+                                </div>
+                                <p class="description">{{ pet.description }}</p>
                             </div>
-                            <p class="description">{{ pet.description }}</p>
                         </div>
                     </li>
                 </ul>
@@ -116,59 +119,70 @@ export default {
     display: none;
 }
 .active {
-    position: fixed;
-    transform: translate(-50%, 0);
-    z-index: 100;
-    top: 20%;
-    left: 50%;
-    width: 750px;
-    min-height: 400px;
-    background: white;
-    padding: 35px;
-    box-shadow: 0px 2px 4035px 4000px rgba(13, 13, 13, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-
-    #close-popup {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        right: 10px;
-        top: 10px;
-        font-family: Georgia, sans-serif;
-        &:before,
-        &:after {
-            content: '';
-            position: absolute;
-            background: #FDDCC4;
-            width: 50%;
-            height: 2px;
-        }
-        &:before {
-            transform: rotate(45deg);
-            left: 9px;
-        }
-        &:after {
-            transform: rotate(-45deg);
-            left: 9px;
-        }
-        &:hover:before,
-        &:hover:after {
-            background: white;
-        }
+    #overlay {
+        position: fixed;
+        background: black;
+        z-index: 1000;
+        width: 10000vh;
+        left: -500%;
+        top: -500%;
+        height: 10000vh;
+        opacity: .5;
     }
+    .wrapper {
+        position: fixed;
+        transform: translate(-50%, 0);
+        z-index: 10000;
+        top: 20%;
+        left: 50%;
+        width: 750px;
+        min-height: 400px;
+        background: white;
+        padding: 35px;
+        display: flex;
+        flex-wrap: wrap;
 
-    div {
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
-
-        h2 {
-            font-size: 35px;
+        #close-popup {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            right: 10px;
+            top: 10px;
+            font-family: Georgia, sans-serif;
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                background: #FDDCC4;
+                width: 50%;
+                height: 2px;
+            }
+            &:before {
+                transform: rotate(45deg);
+                left: 9px;
+            }
+            &:after {
+                transform: rotate(-45deg);
+                left: 9px;
+            }
+            &:hover:before,
+            &:hover:after {
+                background: white;
+            }
         }
 
-        ul {
-            margin-left: 1rem;
+        div {
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+
+            h2 {
+                font-size: 35px;
+            }
+
+            ul {
+                margin-left: 1rem;
+            }
         }
     }
 }
