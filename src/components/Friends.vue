@@ -32,15 +32,18 @@
                                 
                                 <ul>
                                     <li>Age: {{ pet.age }}</li>
-                                    <li
-                                    v-for="i in pet.diseases"
-                                    :key="i">Inoculations: {{ i }}</li>
-                                    <li
-                                    v-for="i in pet.diseases"
-                                    :key="i">Diseases: {{ i }}</li>
-                                    <li 
-                                    v-for="i in pet.parasites"
-                                    :key="i">Parasites: {{ i }}</li>
+                                    <li>Inoculations: <span                                     
+                                        v-for="i in pet.inoculations"
+                                        :key="i">{{ i }} </span>
+                                    </li>
+                                    <li>Diseases: <span                                     
+                                        v-for="i in pet.diseases"
+                                        :key="i">{{ i }} </span>
+                                    </li>
+                                    <li>Parasites: <span
+                                        v-for="i in pet.parasites"
+                                        :key="i">{{ i }} </span>
+                                    </li>
                                 </ul>
                                 </div>
                                 <p class="description">{{ pet.description }}</p>
