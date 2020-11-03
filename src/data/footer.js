@@ -8,15 +8,15 @@ const footerData = {
                 text: 'email@shelter.com',
                 image: require('../assets/icons/mail.svg'),
                 imageAlternative: 'Mail icon',
-                url: '#'
+                url: 'mailto: email@shelter.com'
             },
             {
                 id: 2,
-                type: 'phone',
+                type: 'tel',
                 text: '+13 674 567 75 54',
                 image: require('../assets/icons/phone.svg'),
                 imageAlternative: 'Phone icon',
-                url: '#'
+                url: 'tel: +136745677554'
             }
         ]
     },
