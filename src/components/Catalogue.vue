@@ -259,6 +259,7 @@ export default {
                 opacity: 0.8;
             }
         }
+
         .noactive {
             display: none;
         }
@@ -368,6 +369,67 @@ export default {
     .catalogue {
         &-wrapper {
             width: 600px;
+        }
+    }
+}
+@media(max-width: 850px) {
+    .catalogue {
+        &__item {
+            .active {
+                .wrapper {
+                    width: 320px;
+                    min-height: 300px;
+                    padding: 10px;
+                    flex-direction: column;
+                    align-items: center;
+                    top: 2%;
+
+                    #close-popup {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        border: none;
+                        background: none;
+                        font-family: Georgia, sans-serif;
+                        &:before,
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            background: #FDDCC4;
+                            width: 50%;
+                            height: 2px;
+                        }
+                        &:hover:before,
+                        &:hover:after {
+                            background: #59534e;
+                        }
+                        &:hover {
+                            background: none;
+                        }
+                    }
+
+                    div {
+                        width: 100%;
+
+                        h2 {
+                            font-size: 25px;
+                            text-align: center;
+                            margin: 10px;
+                        }
+
+                        p {
+                            font-size: 18px;
+                            text-align: center;
+                            margin: 10px;
+                        }
+                    }
+
+                    .description {
+                        font-size: 16px;
+                        margin: 10px;
+                    }
+                }
+            }
         }
     }
 }
