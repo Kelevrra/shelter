@@ -16,7 +16,7 @@
                             <button>Learn more</button>
                         </a>
                         <div :class="pet.active">
-                            <div id="overlay"></div>
+                            <div id="overlay" v-on:click="clearAll()"></div>
                             <div class="wrapper">
                                 <button id="close-popup"
                                     value="close"
@@ -30,17 +30,14 @@
                                 
                                 <ul>
                                     <li>Age: {{ pet.age }}</li>
-                                    <li>Inoculations: <span                                     
-                                        v-for="i in pet.inoculations"
-                                        :key="i">{{ i }} </span>
+                                    <li>
+                                        Inoculations: <span>{{ pet.inoculations.join(', ') }}</span>
                                     </li>
-                                    <li>Diseases: <span                                     
-                                        v-for="i in pet.diseases"
-                                        :key="i">{{ i }} </span>
+                                    <li>
+                                        Diseases: <span>{{ pet.diseases.join(', ') }}</span>
                                     </li>
-                                    <li>Parasites: <span
-                                        v-for="i in pet.parasites"
-                                        :key="i">{{ i }} </span>
+                                    <li>
+                                        Parasites: <span>{{ pet.parasites.join(', ') }} </span>
                                     </li>
                                 </ul>
                                 </div>
