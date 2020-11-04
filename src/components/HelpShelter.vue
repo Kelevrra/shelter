@@ -101,6 +101,13 @@ export default {
             line-height: 1.2;
             color: #545454;
         }
+
+        img {
+            transition: 1s;
+            &:hover {
+                transform: rotateY(360deg);
+            }
+        }
     }
 }
 @media(max-width: 1200px) {

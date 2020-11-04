@@ -86,6 +86,15 @@ export default {
         width: 310px;
     }
 
+    &__address {
+        img {
+            transition: 1s;
+            &:hover {
+                transform: rotateY(360deg);
+            }
+        }
+    }
+
     &__image {
         vertical-align: bottom;
     }
